@@ -1,10 +1,15 @@
+import Sidebar from "./Sidebar"
+import FeedVideos from "./FeedVideos"
 
 const Home = () => {
     return (
-        <div>
-            this is the homepage
+        <section>
+            <div className="flex justify-center items-center">
+                <Sidebar />
+                <FeedVideos />
+            </div>
 
-        </div>
+        </section>
     )
 }
 

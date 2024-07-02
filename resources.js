@@ -5,11 +5,16 @@ import JavascriptIcon from "./src/Assets/javascript.svg"
 import MovieIcon from "./src/Assets/movieIcon.svg"
 import MusicIcon from "./src/Assets/musicIcon.svg"
 import ReactIcon from "./src/Assets/reactIcon.svg"
-import YoutubeIcon from "./src/Assets/youtubeIcon.svg"
+import YoutubeIcon from "./src/Assets/YoutubeIcon.png"
 import codeWithHarry from "./src/Assets/codewithharry.png"
 import Navbar from "./src/Components/Navbar"
 import Sidebar from "./src/Components/Sidebar"
 import Home from "./src/Components/Home"
+import Watch from "./src/Components/Watch"
+import Channel from "./src/Components/Channel"
+import WatchFeed from "./src/Components/WatchFeed"
+import Searchbar from "./src/Components/Searchbar"
+import SearchIcon from "./src/Assets/SearcnIcon.svg"
 
 const Options = [
     {
@@ -49,4 +54,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, Navbar, Sidebar, Home }
+export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, Searchbar }
