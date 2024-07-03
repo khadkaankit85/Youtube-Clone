@@ -4,7 +4,7 @@ import FeedVideos from "./FeedVideos"
 const Home = () => {
     return (
         <section>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-between">
                 <Sidebar />
                 <FeedVideos />
             </div>

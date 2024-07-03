@@ -1,12 +1,25 @@
-import { YoutubeIcon, Searchbar } from "../../resources"
+import { YoutubeIcon, SearchIcon } from "../../resources"
 const Navbar = () => {
     return (
-        <nav className='w-full h-20 bg-white text-white border-solid border-white flex items-center justify-between '>
-            <div className="object-cover">
-                <img src={YoutubeIcon} width={"80px"} height={"80px"} alt="" />
+        <div className="flex w-full h-16  bg-[#000000] items-center justify-between p-6">
+            {/* youtube logo */}
+            <div className="">
+                <img src={YoutubeIcon} alt="" width={"40px"} height={"40px"} />
             </div>
-            <Searchbar />
-        </nav>
+            {/* searchbar */}
+            <div className="w-[30%] flex justify-center items-center rounded-md border border-[#928f8f] border-1 font-serif bg">
+                <div className=" w-[calc(100%-38px)] flex justify-center items-center ">
+                    <input type="text" placeholder="Type your input here" className="w-full  outline-none rounded-md p-1 bg-[rgb(54,53,53,0.3)] text-[rgb(100,99,99)]" />
+                </div>
+                <div className="w-[38px] object-contain flex items-center justify-center cursor-pointer border-[#838181] border-l">
+                    <abbr title="Search">
+                        <img src={SearchIcon} alt="search" height={"25px"} width={"25px"} className="" />
+                    </abbr>
+                </div>
+            </div>
+
+
+        </div>
     )
 }
 

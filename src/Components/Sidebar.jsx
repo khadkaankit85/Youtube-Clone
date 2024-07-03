@@ -1,7 +1,7 @@
 import { Options } from "../../resources"
 const Sidebar = () => {
     return (
-        <aside className=" flex justify-center items-center w-[200px] h-full border-red-800 flex-col gap-9 mt-1 bg-black  overflow-auto">            {
+        <aside className=" flex justify-center items-center w-[200px] h-[calc(100vh-4rem)] border-red-800 flex-col gap-9  bg-black  overflow-auto left-0">            {
             Options.map((item) => {
                 return <div key={item.name} className="text-white flex justify-between items-center w-[80%] ml-3 "> <img src={item.icon} width={"40px"} height={"40px"} alt="" />  {item.name}</div>
             })

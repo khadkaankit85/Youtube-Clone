@@ -13,7 +13,6 @@ import Home from "./src/Components/Home"
 import Watch from "./src/Components/Watch"
 import Channel from "./src/Components/Channel"
 import WatchFeed from "./src/Components/WatchFeed"
-import Searchbar from "./src/Components/Searchbar"
 import SearchIcon from "./src/Assets/SearcnIcon.svg"
 
 const Options = [
@@ -31,7 +30,7 @@ const Options = [
         name: "Coding",
         icon: codeWithHarry
     }, {
-        name: "CodeWithHarry",
+        name: "Harry",
         icon: codeWithHarry
     }, {
         name: "Gaming",
@@ -54,4 +53,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, Searchbar }
+export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed }
