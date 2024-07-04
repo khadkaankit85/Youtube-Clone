@@ -582,4 +582,169 @@ const dummySuggestedVideo = {
         }
     ]
 }
-export { dummySuggestedVideo }
+
+const dummyVideoDetail = {
+    "kind": "youtube#videoListResponse",
+    "items": [
+        {
+            "kind": "youtube#video",
+            "id": "7ghhRHRP6t4",
+            "snippet": {
+                "publishedAt": "2020-07-24T04:00:10Z",
+                "channelId": "UCN1hnUccO4FD5WfM7ithXaw",
+                "title": "Maroon 5 - Nobody's Love (Official Music Video)",
+                "description": "“Nobody’s Love” is out now: https://smarturl.it/NobodysLove \n\nFor more, visit: \nInstagram: https://www.instagram.com/maroon5 \nFacebook: https://www.facebook.com/maroon5 \nTwitter: https://twitter.com/maroon5 \nSign up for updates: http://smarturl.it/Maroon5.News \n\n// \n\nLYRICS \n\nYou could make a grown man cry\nIf you ever said goodbye\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\nYou could make a grown man cry\nIf you ever left my side\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\n\nYou’re the only hand in my back pocket\nIf you ever left I’d go psychotic\nHeaven hear me cryin cryin oh oh\nBaby you’re the key to my heart locket\nIf you ever left never unlock it\nLonely like an island, island oh oh\n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love, but yours, but yours\nIf my love ain’t your love it’s never gonna be nobody’s love\nNever gonna need nobody’s trust but yours, but yours\n\nYou could make a grown man cry\nIf you ever said goodbye\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\n\nYou could make a grown man cry, if you ever left my side\nNever let you go never let you go\n\nYou’re the only hand in my back pocket\nIf you ever left I’d go psychotic\nHeaven hear me cryin cryin oh oh\nHit me like a drug and I can’t stop it\nFit me like a glove and I cant knock it. \nI aint even lying lying oh oh \n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\n\nIf my love ain’t your love it’s never gonna be nobody’s love\nNever gonna keep nobody’s trust but yours, but yours\n\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\n\nNobody’s love! Oh yea \n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\n\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\n\n#Maroon5 #NobodysLove #M5\n \nMusic video by Maroon 5 performing Nobody's Love. © 2020 Interscope Records",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/7ghhRHRP6t4/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/7ghhRHRP6t4/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/7ghhRHRP6t4/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/7ghhRHRP6t4/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/7ghhRHRP6t4/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "Maroon5VEVO",
+                "tags": [
+                    "Maroon",
+                    "Nobody's",
+                    "Love",
+                    "222",
+                    "Records/Interscope",
+                    "Records",
+                    "Pop",
+                    "マルーン5",
+                    "마룬5",
+                    "魔力紅",
+                    "魔力红",
+                    "한글자막",
+                    "日本語字幕",
+                    "subtítulos en español",
+                    "Türkçe Altyazılı",
+                    "Phụ đề tiếng Việt",
+                    "Subtitles in Tagalog",
+                    "Teks dalam Bahasa Indonesia",
+                    "उपशीर्षक हिंदी में",
+                    "Sarikata Dalam Bahasa Malaysia",
+                    "คำบรรยายภาษาไทย"
+                ],
+                "categoryId": "10",
+                "liveBroadcastContent": "none",
+                "localized": {
+                    "title": "Maroon 5 - Nobody's Love (Official Music Video)",
+                    "description": "“Nobody’s Love” is out now: https://smarturl.it/NobodysLove \n\nFor more, visit: \nInstagram: https://www.instagram.com/maroon5 \nFacebook: https://www.facebook.com/maroon5 \nTwitter: https://twitter.com/maroon5 \nSign up for updates: http://smarturl.it/Maroon5.News \n\n// \n\nLYRICS \n\nYou could make a grown man cry\nIf you ever said goodbye\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\nYou could make a grown man cry\nIf you ever left my side\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\n\nYou’re the only hand in my back pocket\nIf you ever left I’d go psychotic\nHeaven hear me cryin cryin oh oh\nBaby you’re the key to my heart locket\nIf you ever left never unlock it\nLonely like an island, island oh oh\n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love, but yours, but yours\nIf my love ain’t your love it’s never gonna be nobody’s love\nNever gonna need nobody’s trust but yours, but yours\n\nYou could make a grown man cry\nIf you ever said goodbye\nNever let you go oh-woah oh-I\nNever let you go oh-woah oh-I\n\nYou could make a grown man cry, if you ever left my side\nNever let you go never let you go\n\nYou’re the only hand in my back pocket\nIf you ever left I’d go psychotic\nHeaven hear me cryin cryin oh oh\nHit me like a drug and I can’t stop it\nFit me like a glove and I cant knock it. \nI aint even lying lying oh oh \n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\n\nIf my love ain’t your love it’s never gonna be nobody’s love\nNever gonna keep nobody’s trust but yours, but yours\n\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\n\nNobody’s love! Oh yea \n\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\nIf my love ain’t your love it’s never gonna be nobody’s love \nNever gonna need nobody’s love but yours, but yours\n\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\nIf my love ain’t your love then it’s nobody’s\nOnly yours only yours not just anybody\nAnd If you ever leave then i’m never gonna want nobody, nobody’s love\n\n#Maroon5 #NobodysLove #M5\n \nMusic video by Maroon 5 performing Nobody's Love. © 2020 Interscope Records"
+                }
+            },
+            "contentDetails": {
+                "duration": "PT3M50S",
+                "dimension": "2d",
+                "definition": "hd",
+                "caption": "true",
+                "licensedContent": true,
+                "regionRestriction": {
+                    "blocked": [
+                        "IO",
+                        "KP",
+                        "SS"
+                    ]
+                },
+                "contentRating": {},
+                "projection": "rectangular"
+            },
+            "statistics": {
+                "viewCount": "38818379",
+                "likeCount": "577918",
+                "favoriteCount": "0",
+                "commentCount": "18909"
+            }
+        }
+    ],
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 1
+    }
+}
+
+const dummyChannelDetail = {
+    "kind": "youtube#channelListResponse",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#channel",
+            "id": "UCBVjMGOIkavEAhyqpxJ73Dw",
+            "snippet": {
+                "title": "Maroon 5",
+                "description": "Welcome to the Maroon 5 official Youtube Channel. Head to our website for more info- www.maroon5.com",
+                "customUrl": "@maroon5",
+                "publishedAt": "2006-03-09T03:19:51Z",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/S_jTelpAHOdADumYkZAtwyLydEkqtv39s3T-Rmif0v1WCDb8pZit-Vlo43pR1jBEn0Tmcpkx=s88-c-k-c0x00ffffff-no-rj",
+                        "width": 88,
+                        "height": 88
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/S_jTelpAHOdADumYkZAtwyLydEkqtv39s3T-Rmif0v1WCDb8pZit-Vlo43pR1jBEn0Tmcpkx=s240-c-k-c0x00ffffff-no-rj",
+                        "width": 240,
+                        "height": 240
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/S_jTelpAHOdADumYkZAtwyLydEkqtv39s3T-Rmif0v1WCDb8pZit-Vlo43pR1jBEn0Tmcpkx=s800-c-k-c0x00ffffff-no-rj",
+                        "width": 800,
+                        "height": 800
+                    }
+                },
+                "localized": {
+                    "title": "Maroon 5",
+                    "description": "Welcome to the Maroon 5 official Youtube Channel. Head to our website for more info- www.maroon5.com"
+                },
+                "country": "US"
+            },
+            "contentDetails": {
+                "relatedPlaylists": {
+                    "likes": "",
+                    "uploads": "UUBVjMGOIkavEAhyqpxJ73Dw"
+                }
+            },
+            "statistics": {
+                "viewCount": "24103378959",
+                "subscriberCount": "37000000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "183"
+            },
+            "brandingSettings": {
+                "channel": {
+                    "title": "Maroon 5",
+                    "description": "Welcome to the Maroon 5 official Youtube Channel. Head to our website for more info- www.maroon5.com",
+                    "keywords": "\"James Valentine\" \"Jesse Carmichael\" \"Mickey Madden\" \"Matt Flynn\" \"Maroon 5\" \"Adam Levine\"",
+                    "unsubscribedTrailer": "Ntc2XNAGGMQ",
+                    "country": "US"
+                },
+                "image": {
+                    "bannerExternalUrl": "https://yt3.googleusercontent.com/JAjvs05GQkK0RwQwQFw0DQ6GmxVfb1T9Ua-rTPZ9T1n845otE3RTsaCLKdV889YPSmUY_A4OVV8"
+                }
+            }
+        }
+    ]
+}
+export { dummySuggestedVideo, dummyVideoDetail, dummyChannelDetail }

@@ -1,11 +1,16 @@
 import { YoutubeIcon, SearchIcon } from "../../resources"
+import { Link } from "react-router-dom"
 const Navbar = () => {
     return (
         <div className="flex w-full h-16  bg-[#000000] items-center justify-between p-6">
             {/* youtube logo */}
-            <div className="">
+            <Link to={"/search/one piece"} className="flex items-center gap-2" >
+
                 <img src={YoutubeIcon} alt="" width={"40px"} height={"40px"} />
-            </div>
+                <span className="text-white">
+                    Youtube.com
+                </span >
+            </Link>
             {/* searchbar */}
             <div className="w-[30%] flex justify-center items-center rounded-md border border-[#928f8f] border-1 font-serif bg">
                 <div className=" w-[calc(100%-38px)] flex justify-center items-center ">

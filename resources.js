@@ -14,43 +14,56 @@ import Watch from "./src/Components/Watch"
 import Channel from "./src/Components/Channel"
 import WatchFeed from "./src/Components/WatchFeed"
 import SearchIcon from "./src/Assets/SearcnIcon.svg"
+import VideoCard from "./src/Components/VideoCard"
 
 const Options = [
+
     {
         name: "Home",
-        icon: HomeIcon
+        icon: HomeIcon,
+        to: "home/"
     },
     {
         name: "Education",
-        icon: EducationIcon
+        icon: EducationIcon,
+        to: "education/"
     }, {
         name: "Javascript",
-        icon: JavascriptIcon
+        icon: JavascriptIcon,
+        to: "javascript/"
     }, {
         name: "Coding",
-        icon: codeWithHarry
+        icon: codeWithHarry,
+        to: "coding/"
     }, {
         name: "Harry",
-        icon: codeWithHarry
+        icon: codeWithHarry,
+        to: "code with harry"
     }, {
         name: "Gaming",
-        icon: GamingIcon
+        icon: GamingIcon,
+        to: "gaming/"
     }, {
         name: "React.js",
-        icon: ReactIcon
+        icon: ReactIcon,
+        to: "react js"
     }, {
         name: "Movie",
-        icon: MovieIcon
+        icon: MovieIcon,
+        to: "new movies"
     }, {
         name: "Music",
-        icon: MusicIcon
+        icon: MusicIcon,
+        to: "nepali songs/"
     }, {
         name: "Neffex",
-        icon: MusicIcon
+        icon: MusicIcon,
+        to: "neffex music"
     }, {
-        name: "Another ",
-        icon: MusicIcon
+        name: "Bipul Chettri ",
+        icon: MusicIcon,
+        to: "bipul chhetri"
     }
 ]
 
-export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed }
+export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard }
