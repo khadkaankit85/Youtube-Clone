@@ -6,7 +6,6 @@ const baseUrl = "https://youtube-v31.p.rapidapi.com";
 
 async function fetchAPI(q) {
     try {
-        console.log("the api key is ", import.meta.env.VITE_API_KEY)
 
         const response = await axios.get(`${baseUrl}${q}`, {
             headers: {

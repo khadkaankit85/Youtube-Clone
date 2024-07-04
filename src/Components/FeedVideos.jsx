@@ -4,10 +4,9 @@ import { dummySuggestedVideo } from "../../dummydata"
 const FeedVideos = ({ realSuggestedVideo }) => {
     // const data = dummySuggestedVideo.items
     const data = realSuggestedVideo?.items || dummySuggestedVideo?.items
-    console.log(dummySuggestedVideo)
     return (
 
-        <section className="bg-black w-[calc(100%-205px)] p-4 flex flex-row flex-wrap h-[calc(100vh-4rem)] overflow-auto gap-3">
+        <section className="bg-black w-[calc(100%-205px)] p-4 flex flex-row flex-wrap h-[calc(100vh-4rem)] overflow-auto gap-3 max-sm:w-full">
             {
                 data.map((vid) => {
                     if (vid.id.playlistId) return

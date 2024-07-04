@@ -21,7 +21,7 @@ const Options = [
     {
         name: "Home",
         icon: HomeIcon,
-        to: "home/"
+        to: "the story of monkey d luffy/"
     },
     {
         name: "Education",

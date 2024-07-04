@@ -8,13 +8,13 @@ const Home = () => {
 
     const [searchData, setsearchData] = useState(null)
     let param = useParams()
-    if (!param) {
-        param = "nepal"
+    let query = param.query
+    if (!query || query == undefined) {
+        query = "The story of monkey d luffy"
     }
 
     useEffect(() => {
-        console.log("the param is ", param)
-        fetchAPI(`/search?q=${param.query}&part=snippet%2Cid&maxResults=50&order=date`)
+        fetchAPI(`/search?q=${query}&part=snippet%2Cid&maxResults=50`)
             .then((data => {
                 setsearchData(data)
             }))
@@ -22,7 +22,7 @@ const Home = () => {
                 console.log(e)
             })
 
-    }, [param])
+    }, [query])
 
     return (
         <section>

@@ -2,13 +2,15 @@ import VideoCard from "./VideoCard"
 import { dummySuggestedVideo } from "../../dummydata"
 import propTypes from "prop-types"
 const WatchFeed = ({ realVideoDetail }) => {
-    const data = realVideoDetail.items || dummySuggestedVideo.items
+    let data = realVideoDetail?.items
+
+    if (data === null) { data = dummySuggestedVideo?.items }
 
 
     return (
-        <div className="w-[25%] ml-1 
+        <div className="w-[25%] max-sm:w-full ml-1 
         h-screen
-        overflow-y-auto overflow-x-hidden border-black flex-col gap-y-5 flex justify-center
+        overflow-y-auto overflow-x-hidden border-black flex-col gap-y-5 flex justify-center max-sm:h-fit max-sm:items-center
         ">
             {
                 data.map((vid) => {
@@ -23,7 +25,7 @@ const WatchFeed = ({ realVideoDetail }) => {
     )
 }
 WatchFeed.propTypes = {
-    realVideoDetail: propTypes.object.isRequired
+    realVideoDetail: propTypes.object
 }
 
 export default WatchFeed
