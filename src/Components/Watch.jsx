@@ -15,6 +15,8 @@ const Watch = () => {
         }).catch(() => {
             setrealVideoDetail(dummyChannelDetail)
         })
+
+        window.scrollTo(0, 0)
     }, [videoID])
 
 
@@ -33,8 +35,8 @@ const Watch = () => {
 
 
     return (
-        <div className="w-full flex  justify-between mt-4 overflow-hidden max-sm:flex-col sm:justify-normal">
-            <div className="w-[75%] border-red-700 min-h-screen border-solid bg-black max-sm:w-full max-sm:h-[50vh] max-sm:p-4 max-sm:min-h-[70vh]">
+        <div className="w-full flex md:mt-16 justify-between  overflow-hidden max-sm:flex-col sm:justify-normal ">
+            <div className="w-[75%] border-red-700 max-h-screen border-solid bg-black max-sm:w-full max-sm:h-[50vh] max-sm:p-4 max-sm:min-h-[70vh]">
                 {/* embedded video plays here */}
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${videoID}`} width={"100%"} height={"60%"} controls playing></ReactPlayer>
                 <div className="text-white  bg-[rgb(94,93,93,0.2)] ">
@@ -52,7 +54,14 @@ const Watch = () => {
             {
                 realVideoDetail &&
                 <WatchFeed realVideoDetail={realVideoDetail} />
+            }{
+                !realVideoDetail &&
+                <div className="w-screen h-screen bg-black">
+
+                </div>
             }
+
+
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import propTypes from "prop-types"
 import { Link } from "react-router-dom"
-const VideoCard = ({ Thumbnail, Title, VideoID, ChannelName }) => {
+const ChannelCard = ({ Thumbnail, ChannelName, ChannelID }) => {
     return (
-        <Link to={`/watch/${VideoID}`} >
+        <Link to={`/channel/${ChannelID}`}>
             <div className="w-[380px] border border-black h-[330px] bg-[rgba(66,62,62,0.4)] hover:bg-[rgba(66,62,62,0.7)] cursor-pointer rounded-lg overflow-hidden">
 
                 <div className="object-cover w-[400px] h-[225px] overflow-hidden">
@@ -12,22 +12,22 @@ const VideoCard = ({ Thumbnail, Title, VideoID, ChannelName }) => {
 
                 <div className="pl-2 h-[calc(100%-225px)] w-full">
 
-                    <h5 className="text-white text-clip h-[50%] overflow-hidden" >{Title}</h5>
                     <p className="text-white text-sm font-semibold mt-1">{ChannelName}</p>
+                    <p className="text-white text-clip  overflow-hidden font-thin text-sm" >Youtube Channel</p>
                 </div>
             </div>
 
         </Link>
     )
 }
-VideoCard.propTypes = {
+ChannelCard.propTypes = {
     Thumbnail: propTypes.object,
     ChannelName: propTypes.string,
     Views: propTypes.string,
     Title: propTypes.string,
-    VideoID: propTypes.string
+    ChannelID: propTypes.string
 
 }
 
-export default VideoCard
+export default ChannelCard
 

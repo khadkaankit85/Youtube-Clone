@@ -9,9 +9,10 @@ const WatchFeed = ({ realVideoDetail }) => {
 
     return (
         <div className="w-[25%] max-sm:w-full ml-1 
-        h-screen
-        overflow-y-auto overflow-x-hidden border-black flex-col gap-y-5 flex justify-center max-sm:h-fit max-sm:items-center
+        overflow-y-auto overflow-x-hidden border-black flex-col gap-y-5 flex justify-center max-sm:h-fit max-sm:items-center 
+        mt-10
         ">
+
             {
                 data.map((vid) => {
                     if (vid.id.playlistId) return

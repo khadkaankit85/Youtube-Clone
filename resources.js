@@ -15,6 +15,7 @@ import Channel from "./src/Components/Channel"
 import WatchFeed from "./src/Components/WatchFeed"
 import SearchIcon from "./src/Assets/SearcnIcon.svg"
 import VideoCard from "./src/Components/VideoCard"
+import ChannelCard from "./src/Components/ChannelCard"
 
 const Options = [
 
@@ -66,4 +67,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard }
+export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard }

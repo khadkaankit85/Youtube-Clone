@@ -2,7 +2,7 @@ import { Options } from "../../resources"
 import { Link } from "react-router-dom"
 const Sidebar = () => {
     return (
-        <aside className=" flex justify-center items-center w-[200px] h-[calc(100vh-4rem)] border-red-800 flex-col gap-6  bg-black overflow-y-scroll max-sm:hidden  ">
+        <aside className=" flex justify-center items-center w-[200px] h-screen border-red-800 flex-col gap-6  bg-black overflow-y-scroll max-sm:hidden  ">
             <div className="h-3 w-full">
             </div>          {
                 Options.map((item) => {

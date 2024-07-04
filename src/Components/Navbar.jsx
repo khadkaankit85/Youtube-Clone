@@ -7,7 +7,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     return (
-        <div className="flex w-full h-16  bg-[#000000] items-center justify-between p-6">
+        <div className="flex w-full h-16  bg-[#000000] items-center justify-between p-6 fixed">
             {/* youtube logo */}
             <Link to={"/search/one piece"} className="flex items-center gap-2" >
 
