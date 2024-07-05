@@ -17,6 +17,7 @@ import WatchFeed from "./src/Components/WatchFeed"
 import SearchIcon from "./src/Assets/SearcnIcon.svg"
 import VideoCard from "./src/Components/VideoCard"
 import ChannelCard from "./src/Components/ChannelCard"
+import fetchAPI from "./src/FetchApi"
 
 const Options = [
 
@@ -68,4 +69,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, RedNBlueBG, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard }
+export { Options, YoutubeIcon, RedNBlueBG, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard, fetchAPI }

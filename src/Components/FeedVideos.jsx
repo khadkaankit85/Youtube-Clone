@@ -13,6 +13,7 @@ const FeedVideos = ({ realSuggestedVideo }) => {
 
                     if (vid?.id?.channelId) {
                         console.log(vid)
+                        console.log("this channel's id is ", vid?.id?.channelId)
                         return <ChannelCard key={vid?.id?.channelId} Thumbnail={vid?.snippet?.thumbnails?.high || vid?.snippet?.thumbnails?.default}
                             Title={vid.snippet.title} ChannelName={vid.snippet.channelTitle} ChannelID={vid?.id?.channelId}
                         />
