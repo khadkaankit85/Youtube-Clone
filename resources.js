@@ -3,6 +3,7 @@ import GamingIcon from "./src/Assets/gamingIcon.svg"
 import HomeIcon from "./src/Assets/homeIcon.svg"
 import JavascriptIcon from "./src/Assets/javascript.svg"
 import MovieIcon from "./src/Assets/movieIcon.svg"
+import RedNBlueBG from "./src/Assets/read and blue background.png"
 import MusicIcon from "./src/Assets/musicIcon.svg"
 import ReactIcon from "./src/Assets/reactIcon.svg"
 import YoutubeIcon from "./src/Assets/YoutubeIcon.png"
@@ -67,4 +68,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard }
+export { Options, YoutubeIcon, RedNBlueBG, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard }
