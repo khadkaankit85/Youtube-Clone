@@ -4,6 +4,7 @@ import HomeIcon from "./src/Assets/homeIcon.svg"
 import JavascriptIcon from "./src/Assets/javascript.svg"
 import MovieIcon from "./src/Assets/movieIcon.svg"
 import RedNBlueBG from "./src/Assets/read and blue background.png"
+import verifiedIcon from "./src/Assets/verifiedIcon.png"
 import MusicIcon from "./src/Assets/musicIcon.svg"
 import ReactIcon from "./src/Assets/reactIcon.svg"
 import YoutubeIcon from "./src/Assets/YoutubeIcon.png"
@@ -18,6 +19,7 @@ import SearchIcon from "./src/Assets/SearcnIcon.svg"
 import VideoCard from "./src/Components/VideoCard"
 import ChannelCard from "./src/Components/ChannelCard"
 import fetchAPI from "./src/FetchApi"
+import ChannelPageCard from "./src/Components/ChannelPageCard"
 
 const Options = [
 
@@ -69,4 +71,4 @@ const Options = [
     }
 ]
 
-export { Options, YoutubeIcon, RedNBlueBG, SearchIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard, fetchAPI }
+export { Options, YoutubeIcon, RedNBlueBG, SearchIcon, verifiedIcon, Navbar, Sidebar, Home, Watch, Channel, WatchFeed, VideoCard, ChannelCard, ChannelPageCard, fetchAPI }

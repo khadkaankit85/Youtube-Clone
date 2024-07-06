@@ -1,4 +1,4 @@
-import { RedNBlueBG, ChannelCard, fetchAPI } from "../../resources"
+import { RedNBlueBG, ChannelPageCard, fetchAPI, VideoCard } from "../../resources"
 // import { dummySuggestedVideo } from "../../dummydata"
 import { useParams } from "react-router-dom"
 import propTypes from "prop-types"
@@ -23,6 +23,7 @@ const Channel = () => {
 
         fetchAPI(`/search?channelId=${channelID}&part=snippet%2Cid&maxResults=50`).then((data) => {
             setChannelVideos(data)
+
         }).catch((e) => {
             console.log(e)
         })
@@ -35,20 +36,33 @@ const Channel = () => {
             {channelData && ChannelVideos &&
                 <div>
 
-                    <div className=" overflow-hidden h-[32vh] w-full bg-red-950 border-blue-800 border-solid border mt-24" >
-                        <img src={RedNBlueBG} className="object-cover" alt="" width={"full"} height={"20vh"} />
+                    <div className=" overflow-hidden h-[32vh] w-full  border-blue-800 border-solid border mt-24 channel-banner " >
+                        {/* <img src={RedNBlueBG} className="object-cover" alt="" width={"full"} height={"20vh"} /> */}
 
                     </div>
 
-                    <div className="bg-black h-screen w-screen">
+                    <div className="">
+                        <ChannelPageCard data={channelData} />
+
+                    </div>
+
+                    <div className="bg-black h-fit  w-full flex flex-wrap gap-3 items-center justify-center" >
+
+                        {
+                            ChannelVideos.items.map((vid) => {
+                                const videoKey = vid?.id?.videoId || vid?.id?.playlistId;
+                                return <VideoCard key={videoKey} Thumbnail={vid?.snippet?.thumbnails?.high || vid?.snippet?.thumbnails?.default}
+                                    Title={vid.snippet.title} ChannelName={vid.snippet.channelTitle} VideoID={vid.id.videoId || vid.id.playlistId}
+                                />
+                            })
+                        }
 
                     </div>
                 </div>
 
             }
-            {/* <ChannelCard key={vid?.id?.channelId} Thumbnail={vid?.snippet?.thumbnails?.high || vid?.snippet?.thumbnails?.default}
-                Title={vid.snippet.title} ChannelName={vid.snippet.channelTitle} ChannelID={vid?.id?.channelId}
-            /> */}
+
+
         </>
     )
 }

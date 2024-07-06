@@ -747,4 +747,69 @@ const dummyChannelDetail = {
         }
     ]
 }
-export { dummySuggestedVideo, dummyVideoDetail, dummyChannelDetail }
+
+const dummyChannelData = {
+    "kind": "youtube#channelListResponse",
+    "pageInfo": {
+        "totalResults": 1,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#channel",
+            "id": "UCeVMnSShP_Iviwkknt83cww",
+            "snippet": {
+                "title": "CodeWithHarry",
+                "description": "Code With Harry is my attempt to teach basics and those coding techniques to people in short time which took me ages to learn.\nAt Code With Harry, I provide a quick and to the point demo along with resources of anything and everything I teach. Source code and other resources are hosted on my website CodeWithHarry.com. I provide source code(if any) in the description of every video.\nQuality programming videos in Hindi :)\nBusiness enquiries: harry@codewithharry.com\n",
+                "customUrl": "@codewithharry",
+                "publishedAt": "2018-04-28T14:50:54Z",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_m05oPc8I5nhz_ej6JdKoxA6vglaI76AMqtDELBj1s2o0o=s88-c-k-c0x00ffffff-no-rj",
+                        "width": 88,
+                        "height": 88
+                    },
+                    "medium": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_m05oPc8I5nhz_ej6JdKoxA6vglaI76AMqtDELBj1s2o0o=s240-c-k-c0x00ffffff-no-rj",
+                        "width": 240,
+                        "height": 240
+                    },
+                    "high": {
+                        "url": "https://yt3.ggpht.com/ytc/AIdro_m05oPc8I5nhz_ej6JdKoxA6vglaI76AMqtDELBj1s2o0o=s800-c-k-c0x00ffffff-no-rj",
+                        "width": 800,
+                        "height": 800
+                    }
+                },
+                "localized": {
+                    "title": "CodeWithHarry",
+                    "description": "Code With Harry is my attempt to teach basics and those coding techniques to people in short time which took me ages to learn.\nAt Code With Harry, I provide a quick and to the point demo along with resources of anything and everything I teach. Source code and other resources are hosted on my website CodeWithHarry.com. I provide source code(if any) in the description of every video.\nQuality programming videos in Hindi :)\nBusiness enquiries: harry@codewithharry.com\n"
+                },
+                "country": "IN"
+            },
+            "contentDetails": {
+                "relatedPlaylists": {
+                    "likes": "",
+                    "uploads": "UUeVMnSShP_Iviwkknt83cww"
+                }
+            },
+            "statistics": {
+                "viewCount": "787540210",
+                "subscriberCount": "6260000",
+                "hiddenSubscriberCount": false,
+                "videoCount": "2372"
+            },
+            "brandingSettings": {
+                "channel": {
+                    "title": "CodeWithHarry",
+                    "description": "Code With Harry is my attempt to teach basics and those coding techniques to people in short time which took me ages to learn.\nAt Code With Harry, I provide a quick and to the point demo along with resources of anything and everything I teach. Source code and other resources are hosted on my website CodeWithHarry.com. I provide source code(if any) in the description of every video.\nQuality programming videos in Hindi :)\nBusiness enquiries: harry@codewithharry.com\n",
+                    "keywords": "\"code with harry\" codewithharry \"code withharry\" \"codewith harry\" \"python code with harry\" \"code with harry python\" \"Code With Harry\" CodeWithHarry",
+                    "country": "IN"
+                },
+                "image": {
+                    "bannerExternalUrl": "https://lh3.googleusercontent.com/mLmhDvFixcJ0_qhojvaYJYTYkpzqAIY4Crn20jLOCfqyb5SqIi1O4NDFHa8Gbljh-T_1yZf2Fg"
+                }
+            }
+        }
+    ]
+}
+export { dummySuggestedVideo, dummyVideoDetail, dummyChannelDetail, dummyChannelData }

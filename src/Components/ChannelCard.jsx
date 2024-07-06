@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 const ChannelCard = ({ Thumbnail, ChannelName, ChannelID }) => {
     return (
         <Link to={`/channel/${ChannelID}`}>
-            <div className="w-[380px] border border-black h-[330px] bg-[rgba(66,62,62,0.4)] hover:bg-[rgba(66,62,62,0.7)] cursor-pointer rounded-lg overflow-hidden">
+            <div className="w-[320px] border border-black h-[330px] bg-[rgba(66,62,62,0.4)] hover:bg-[rgba(66,62,62,0.7)] cursor-pointer rounded-lg overflow-hidden
+            
+            max-sm:w-[360px]  max-sm:my-3">
 
                 <div className="object-cover w-[400px] h-[225px] overflow-hidden">
                     <img src={Thumbnail.url} alt="Thumbnail" className="object-cover object-center w-full h-full" />

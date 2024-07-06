@@ -27,9 +27,11 @@ const Home = () => {
     return (
         <section>
             <div className="text-red-400"></div>
-            <div className="flex justify-between">
+            <div className="flex justify-between ">
                 <Sidebar />
-                <FeedVideos realSuggestedVideo={searchData} />
+                {searchData &&
+                    <FeedVideos realSuggestedVideo={searchData} />
+                }
             </div>
 
         </section>

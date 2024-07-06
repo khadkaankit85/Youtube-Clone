@@ -6,7 +6,7 @@ const FeedVideos = ({ realSuggestedVideo }) => {
     const data = realSuggestedVideo?.items || dummySuggestedVideo?.items
     return (
 
-        <section className="bg-black w-[calc(100%-205px)] p-4 flex flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full">
+        <section className="bg-black w-[calc(100%-205px)] mt-10 p-4 flex flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
             {
                 data.map((vid) => {
                     if (vid?.id?.playlistId) return
