@@ -48,7 +48,7 @@ const Watch = () => {
                     <div className="text-white  bg-[rgb(94,93,93,0.2)] ">
 
                         <h4 className="p-6">{videoTitle}</h4>
-                        <p className="text-right">{parseInt(likesCount).toLocaleString()} likes</p>
+                        <p className="text-right">{parseInt(likesCount).toLocaleString() || 0} likes</p>
 
                         <Link to={`/channel/${ChannelID}`} className="ml-6  p-2  rounded-lg flex items-center gap-3 max-sm:p-6 cursor-pointer">
                             <img src={channelProfilePicture} width={"40px"} height={"40px"} alt="" className="rounded-full inline" />

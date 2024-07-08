@@ -1,4 +1,4 @@
-import { RedNBlueBG, ChannelPageCard, fetchAPI, VideoCard } from "../../resources"
+import { ChannelPageCard, fetchAPI, VideoCard } from "../../resources"
 // import { dummySuggestedVideo } from "../../dummydata"
 import { useParams } from "react-router-dom"
 import propTypes from "prop-types"
