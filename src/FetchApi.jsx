@@ -1,18 +1,8 @@
 import axios from "axios";
 
-
-const baseUrl = "https://youtube-v31.p.rapidapi.com";
-
-
 async function fetchAPI(q) {
     try {
-
-        const response = await axios.get(`${baseUrl}${q}`, {
-            headers: {
-                'x-rapidapi-key': import.meta.env.VITE_API_KEY,
-            }
-        });
-
+        const response = await axios.get(`/getData?q=${q}`);
         return response.data; // Assuming the API returns JSON data
     } catch (error) {
         console.error('Error fetching API:', error);
