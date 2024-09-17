@@ -6,7 +6,7 @@ const VideoCard = ({ Thumbnail, Title, VideoID, ChannelName }) => {
             <div className="w-[320px] border border-black h-[330px] bg-[rgba(66,62,62,0.4)] hover:bg-[rgba(66,62,62,0.7)] cursor-pointer rounded-lg overflow-hidden max-sm:w-[360px]  max-sm:my-3">
 
                 <div className="object-cover w-[340px] h-[225px] overflow-hidden max-sm:w-[420px]">
-                    <img src={Thumbnail.url} alt="Thumbnail" className="object-cover object-center w-full h-full" />
+                    <img src={Thumbnail} alt="Thumbnail" className="object-cover object-center w-full h-full" />
                 </div>
 
 
@@ -21,7 +21,7 @@ const VideoCard = ({ Thumbnail, Title, VideoID, ChannelName }) => {
     )
 }
 VideoCard.propTypes = {
-    Thumbnail: propTypes.object,
+    Thumbnail: propTypes.string,
     ChannelName: propTypes.string,
     Views: propTypes.string,
     Title: propTypes.string,

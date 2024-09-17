@@ -8,7 +8,7 @@ const ChannelCard = ({ Thumbnail, ChannelName, ChannelID }) => {
             max-sm:w-[360px]  max-sm:my-3">
 
                 <div className="object-cover w-[400px] h-[225px] overflow-hidden">
-                    <img src={Thumbnail.url} alt="Thumbnail" className="object-cover object-center w-full h-full" />
+                    <img src={Thumbnail} alt="Thumbnail" className="object-cover object-center w-full h-full" />
                 </div>
 
 
