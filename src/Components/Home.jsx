@@ -1,9 +1,8 @@
 import Sidebar from "./Sidebar"
 import FeedVideos from "./FeedVideos"
 import { useParams } from "react-router-dom"
-import fetchAPI from "../FetchApi"
 import { useEffect, useState } from "react"
-
+import { apiEndpoint } from "../Assets/constants"
 const Home = () => {
 
     const [searchData, setsearchData] = useState(null)
@@ -14,13 +13,16 @@ const Home = () => {
     }
 
     useEffect(() => {
-        fetchAPI(`/search?q=${query}&part=snippet%2Cid&maxResults=50`)
-            .then((data => {
-                setsearchData(data)
-            }))
-            .catch((e) => {
-                console.log(e)
-            })
+        fetch(apiEndpoint, {
+            query: {
+                searchQuery: "The one piece is real"
+            }
+        }).then((data) => {
+            data.json()
+        }).then((json) => {
+            console.log(json)
+            setsearchData(json)
+        })
 
     }, [query])
 

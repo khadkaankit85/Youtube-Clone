@@ -32,7 +32,28 @@ app.get("/channel/videos", async (req, res) => {
 
     try {
         const response = await axios.request(options);
-        res.send(response)
+        res.send(response.data)
+    } catch (error) {
+        console.error(error);
+        res.status(304).send("server error")
+    }
+})
+app.get("/search", async (req, res) => {
+
+    const searchQuery = req.query.searchQuery
+    const options = {
+        method: 'GET',
+        url: 'https://yt-api.p.rapidapi.com/search',
+        params: { query: searchQuery },
+        headers: {
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'yt-api.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await axios.request(options);
+        res.send(response.data)
     } catch (error) {
         console.error(error);
         res.status(304).send("server error")
