@@ -1,75 +1,114 @@
-import { WatchFeed } from "./../../resources"
-import ReactPlayer from "react-player"
-import { useParams, Link } from "react-router-dom"
-import { dummyChannelDetail } from "../../dummydata"
-import { useEffect, useState } from "react"
-import fetchAPI from "../FetchApi"
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import ReactPlayer from "react-player";
+// import { WatchFeed } from "./../../resources";
+import { dummyChannelDetail } from "../../dummydata";
 
 const Watch = () => {
-    const [realVideoDetail, setrealVideoDetail] = useState(null)
-    const videoID = useParams().id
+    const [realVideoDetail, setRealVideoDetail] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { id: videoID } = useParams();
 
     useEffect(() => {
-        fetchAPI(`/search?relatedToVideoId=${videoID}&part=id%2Csnippet&type=video&maxResults=50`).then((video) => {
-            setrealVideoDetail(video)
-        }).catch(() => {
-            setrealVideoDetail(dummyChannelDetail)
-        })
+        const fetchVideoInfo = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/video/info?videoID=${videoID}`);
 
-        window.scrollTo(0, 0)
-    }, [videoID])
-
-
-
-    // const videoDetail = dummyVideoDetail.items[0].snippet
-    // const videoStatistics = dummyVideoDetail.items[0].statistics
-    const videoDetail = realVideoDetail?.items[0]?.snippet
-    const videoStatistics = realVideoDetail?.items[0]?.videoStatistics
-    const ChannelID = realVideoDetail?.items[0]?.snippet?.channelId
-
-
-    const videoTitle = videoDetail?.title
-    // const viewsCount = videoStatistics.viewCount
-    const likesCount = videoStatistics?.likeCount
-    const channelName = videoDetail?.channelTitle
-
-    const pfp = realVideoDetail
-    console.log(pfp)
-
-    const channelProfilePicture = realVideoDetail?.items[0]?.snippet?.thumbnails?.high?.url || realVideoDetail?.items[0]?.snippet?.thumbnails?.default?.url
-    return (
-        <div className="w-full flex md:mt-16 justify-between  overflow-hidden max-sm:flex-col sm:justify-normal max-sm:mt-[50px] ">
-
-
-            {realVideoDetail &&
-                <div className="w-[75%] border-red-700 max-h-screen border-solid bg-black max-sm:w-full max-sm:h-[70vh] max-sm:p-4 max-sm:min-h-[50vh]">
-                    {/* embedded video plays here */}
-                    <ReactPlayer url={`https://www.youtube.com/watch?v=${videoID}`} width={"100%"} height={"60%"} controls playing></ReactPlayer>
-                    <div className="text-white  bg-[rgb(94,93,93,0.2)] ">
-
-                        <h4 className="p-6">{videoTitle}</h4>
-                        <p className="text-right">{parseInt(likesCount).toLocaleString() || 0} likes</p>
-
-                        <Link to={`/channel/${ChannelID}`} className="ml-6  p-2  rounded-lg flex items-center gap-3 max-sm:p-6 cursor-pointer">
-                            <img src={channelProfilePicture} width={"40px"} height={"40px"} alt="" className="rounded-full inline" />
-
-                            {channelName} :)</Link >
-
-                    </div>
-                </div>}
-            {
-                realVideoDetail &&
-                <WatchFeed realVideoDetail={realVideoDetail} />
-            }{
-                !realVideoDetail &&
-                <div className="w-screen h-screen bg-black">
-
-                </div>
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const jsonData = await response.json();
+                // console.log(jsonData)
+                setRealVideoDetail(jsonData);
+            } catch (err) {
+                console.error("Failed to fetch video info:", err);
+                setError(err.message);
+                setRealVideoDetail(dummyChannelDetail); // Ensure dummyChannelDetail matches the structure
+            } finally {
+                setIsLoading(false);
+                window.scrollTo(0, 0);
             }
+        };
 
+        if (videoID) {
+            fetchVideoInfo();
+        } else {
+            setError("No video ID provided");
+            setIsLoading(false);
+        }
+    }, [videoID]);
 
+    // **Corrected Data Extraction Based on Provided Structure**
+    const videoTitle = realVideoDetail?.title || "Untitled Video";
+    const viewCount = realVideoDetail?.viewCount ? parseInt(realVideoDetail.viewCount).toLocaleString() : "0";
+    const likesCount = realVideoDetail?.likeCount ? parseInt(realVideoDetail.likeCount).toLocaleString() : "0";
+    const channelName = realVideoDetail?.channelTitle || "Unknown Channel";
+    const channelID = realVideoDetail?.channelId;
+    const channelProfilePicture =
+        realVideoDetail?.thumbnails?.high?.url ||
+        realVideoDetail?.thumbnails?.default?.url ||
+        "default-profile.png"; // Ensure this path points to a valid image
+
+    // **Handling Different States: Loading, Error, and Success**
+    if (isLoading) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center bg-black">
+                <p className="text-white text-xl">Loading...</p>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center bg-black">
+                <p className="text-red-500 text-xl">Error: {error}</p>
+            </div>
+        );
+    }
+
+    if (!realVideoDetail) {
+        return (
+            <div className="w-full h-screen flex justify-center items-center bg-black">
+                <p className="text-white text-xl">No video details available.</p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="w-full flex md:mt-16 justify-between overflow-hidden max-sm:flex-col sm:justify-normal max-sm:mt-[50px]">
+            <div className="w-[75%] bg-black max-h-screen max-sm:w-full max-sm:h-[70vh] max-sm:p-4 max-sm:min-h-[50vh]">
+                {/* Embedded video player */}
+                <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${videoID}`}
+                    width="100vw"
+                    height="100vh"
+                    controls
+                    playing
+                    className="react-player"
+                />
+                <div className="text-white bg-[rgba(94,93,93,0.2)] p-6">
+                    <h4 className="mb-2">{videoTitle}</h4>
+                    <p className="text-right mb-4">{likesCount} likes</p>
+                    <p className="text-right mb-4">{viewCount} views</p>
+                    <Link
+                        to={`/channel/${channelID}`}
+                        className="flex items-center gap-3 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition cursor-pointer"
+                    >
+                        <img
+                            src={channelProfilePicture}
+                            width="40"
+                            height="40"
+                            alt={`${channelName} Profile`}
+                            className="rounded-full"
+                        />
+                        <span>{channelName}</span>
+                    </Link>
+                </div>
+            </div>
+            {/* <WatchFeed realVideoDetail={realVideoDetail} /> */}
         </div>
-    )
-}
+    );
+};
 
-export default Watch
+export default Watch;

@@ -1,14 +1,14 @@
 import { VideoCard } from "../../resources"
 import propType from "prop-types"
 const FeedVideos = ({ realSuggestedVideo }) => {
-    console.log(realSuggestedVideo)
+    // console.log(realSuggestedVideo)
     // const data = dummySuggestedVideo.items
     const data = realSuggestedVideo
     return (
         <section className="bg-black w-[calc(100%-205px)] mt-10 p-4 flex flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
             {
                 data.map((vid) => {
-                    console.log(vid?.thumbnail?.[1]?.url || vid?.thumbnail?.[0]?.url || vid?.snippet?.thumbnails?.high?.url || vid?.snippet?.thumbnails?.default?.url)
+                    // console.log(vid?.thumbnail?.[1]?.url || vid?.thumbnail?.[0]?.url || vid?.snippet?.thumbnails?.high?.url || vid?.snippet?.thumbnails?.default?.url)
                     if (vid.type !== "video") return null; // Only render videos
 
                     const thumbnailUrl = vid?.thumbnail?.[1]?.url || vid?.thumbnail?.[0]?.url || vid?.snippet?.thumbnails?.high?.url || vid?.snippet?.thumbnails?.default?.url;
