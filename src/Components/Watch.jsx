@@ -5,6 +5,8 @@ import ReactPlayer from "react-player";
 import { dummyChannelDetail } from "../../dummydata";
 import FeedVideos from "./FeedVideos";
 
+import { Audio } from "react-loader-spinner";
+
 const Watch = () => {
     const [realVideoDetail, setRealVideoDetail] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -44,10 +46,10 @@ const Watch = () => {
             setIsLoading(false);
         }
     }, [videoID]);
+    console.log(realVideoDetail)
 
     const videoTitle = realVideoDetail?.title || "Untitled Video";
     const viewCount = realVideoDetail?.viewCount ? parseInt(realVideoDetail.viewCount).toLocaleString() : "0";
-    const likesCount = realVideoDetail?.likeCount ? parseInt(realVideoDetail.likeCount).toLocaleString() : "0";
     const channelName = realVideoDetail?.channelTitle || "Unknown Channel";
     const channelID = realVideoDetail?.channelId;
     const channelProfilePicture =
@@ -57,8 +59,17 @@ const Watch = () => {
 
     if (isLoading) {
         return (
-            <div className="w-full h-screen flex justify-center items-center bg-black">
-                <p className="text-white text-xl">Loading...</p>
+            <div className="w-screen h-screen flex items-center justify-center">
+
+                <Audio
+                    height="200"
+                    width="200"
+                    radius="9"
+                    color="green"
+                    ariaLabel="loading"
+                    wrapperStyle
+                    wrapperClass
+                />
             </div>
         );
     }
@@ -92,26 +103,22 @@ const Watch = () => {
                         playing
                         className="react-player"
                     />
-                    <div className="text-white bg-[rgba(94,93,93,0.2)] p-6">
-                        <h4 className="mb-2">{videoTitle}</h4>
-                        <p className="text-right mb-4">{likesCount} likes</p>
-                        <p className="text-right mb-4">{viewCount} views</p>
-                        <Link
-                            to={`/channel/${channelID}`}
-                            className="flex items-center gap-3 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition cursor-pointer"
-                        >
-                            <img
-                                src={channelProfilePicture}
-                                width="40"
-                                height="40"
-                                alt={`${channelName} Profile`}
-                                className="rounded-full"
-                            />
-                            <span>{channelName}</span>
-                        </Link>
-                    </div>
+
                 </div>
             </div>
+            <>
+                <div className="text-white bg-[rgba(94,93,93,0.2)] p-6">
+                    <h4 className="mb-2">{videoTitle}</h4>
+                    <span className="text-right mb-4">{viewCount} views</span>
+                    <Link
+                        to={`/channel/${channelID}`}
+                        className="flex items-center gap-3 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition cursor-pointer"
+                    >
+
+                        <span> Uploaded By {channelName}</span>
+                    </Link>
+                </div>
+            </>
             <>
                 {relatedVideos && <FeedVideos realSuggestedVideo={relatedVideos} />}
                 {!relatedVideos && <div>Loading....</div>}

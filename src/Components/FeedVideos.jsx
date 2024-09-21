@@ -5,7 +5,7 @@ const FeedVideos = ({ realSuggestedVideo }) => {
     // const data = dummySuggestedVideo.items
     const data = realSuggestedVideo?.data
     return (
-        <section className="bg-black w-full mt-10 p-4 flex justify-center flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
+        <section className="bg-black w-full mt-10 p-4 flex justify-center flex-row flex-wrap  pb-9 overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
             {
                 data.map((vid) => {
                     // console.log(vid?.thumbnail?.[1]?.url || vid?.thumbnail?.[0]?.url || vid?.snippet?.thumbnails?.high?.url || vid?.snippet?.thumbnails?.default?.url)

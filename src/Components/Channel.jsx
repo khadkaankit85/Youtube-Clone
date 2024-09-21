@@ -1,74 +1,79 @@
-import { ChannelPageCard, fetchAPI, VideoCard } from "../../resources"
-// import { dummySuggestedVideo } from "../../dummydata"
-import { useParams } from "react-router-dom"
-import propTypes from "prop-types"
-import { useEffect, useState } from "react"
-
+import { ChannelPageCard, VideoCard } from "../../resources";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Channel = () => {
-    const [channelData, setchannelData] = useState(null)
-    const [ChannelVideos, setChannelVideos] = useState(null)
-    // const data = realSuggestedVideo?.items || dummySuggestedVideo?.items
-    const param = useParams()
-    const channelID = param?.id
+    const [channelData, setChannelData] = useState(null);
+    const [channelVideos, setChannelVideos] = useState(null);
+    const param = useParams();
+    const channelID = param?.id;
 
     useEffect(() => {
-        // we gonna fetch channel detail and channel videos here
+        // Fetch channel details
+        fetch(`${import.meta.env.VITE_API_URL}/video/getChannelData?channelID=${channelID}`)
+            .then(async (response) => {
+                const fetchedData = await response.json();
+                setChannelData(fetchedData);
+                console.log("Channel data is ", fetchedData);
+            })
+            .catch((error) => {
+                console.log("Error fetching channel data: ", error);
+            });
 
-        fetchAPI(`/channels?part=snippet%2Cstatistics&id=${channelID}`).then((data) => {
-            setchannelData(data)
-        }).catch((e) => {
-            console.log(e)
-        })
+        // Fetch channel videos
+        fetch(`${import.meta.env.VITE_API_URL}/video/getChannelvideos?channelID=${channelID}`)
+            .then(async (response) => {
+                const fetchedData = await response.json();
+                setChannelVideos(fetchedData);
+                console.log("Channel videos are  ", fetchedData);
+            })
+            .catch((error) => {
+                console.log("Error fetching channel videos: ", error);
+            });
+    }, [channelID]);
 
-        fetchAPI(`/search?channelId=${channelID}&part=snippet%2Cid&maxResults=50`).then((data) => {
-            setChannelVideos(data)
-
-        }).catch((e) => {
-            console.log(e)
-        })
-
-    }, [channelID])
+    if (!channelData) {
+        return <>Loading...</>;
+    }
 
     return (
         <>
-
-            {channelData && ChannelVideos &&
+            {channelData && channelVideos && (
                 <div>
-
-                    <div className=" overflow-hidden h-[32vh] w-full  border-blue-800 border-solid border mt-24 channel-banner " >
-                        {/* <img src={RedNBlueBG} className="object-cover" alt="" width={"full"} height={"20vh"} /> */}
-
+                    <div className="overflow-hidden h-[32vh] w-full border-blue-800 border-solid border mt-24 channel-banner">
+                        {/* Channel Banner */}
                     </div>
 
-                    <div className="">
+                    <div>
                         <ChannelPageCard data={channelData} />
-
                     </div>
 
-                    <div className="bg-black h-fit  w-full flex flex-wrap gap-3 items-center justify-center" >
+                    <div className="bg-black h-fit w-full flex flex-wrap gap-3 items-center justify-center">
+                        {/* Map the channel videos */}
+                        {channelVideos.data.map((vid, index) => {
+                            // console.log(vid?.videoId || vid?.playlistId);
 
-                        {
-                            ChannelVideos.items.map((vid) => {
-                                const videoKey = vid?.id?.videoId || vid?.id?.playlistId;
-                                return <VideoCard key={videoKey} Thumbnail={vid?.snippet?.thumbnails?.high || vid?.snippet?.thumbnails?.default}
-                                    Title={vid.snippet.title} ChannelName={vid.snippet.channelTitle} VideoID={vid.id.videoId || vid.id.playlistId}
+                            // Get video key based on whether it's a video or playlist
+                            const videoKey = vid?.videoId || vid?.playlistId;
+
+                            // Get thumbnail from the video data
+                            const thumbnailUrl = vid?.thumbnail[2]?.url || vid?.thumbnail[1]?.url || vid?.thumbnail[0]?.url;
+
+                            return (
+                                <VideoCard
+                                    key={videoKey || index}
+                                    Thumbnail={thumbnailUrl}
+                                    Title={vid?.title}
+                                    ChannelName={channelData?.meta?.title || ""}
+                                    VideoID={vid?.videoId || vid?.playlistId}
                                 />
-                            })
-                        }
-
+                            );
+                        })}
                     </div>
                 </div>
-
-            }
-
-
+            )}
         </>
-    )
-}
+    );
+};
 
-Channel.propTypes = {
-    realSuggestedVideo: propTypes.object
-}
-
-export default Channel
+export default Channel;

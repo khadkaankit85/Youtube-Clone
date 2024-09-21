@@ -132,6 +132,58 @@ app.get("/video/getrelatedVideos", async (req, res) => {
     }
 });
 
+app.get("/video/getChannelData", async (req, res) => {
+    const channelID = req.query.channelID;
+    if (!channelID) {
+        return res.status(400).send("Video ID is required");
+    }
+
+    const url = `https://yt-api.p.rapidapi.com/channel/home?id=${channelID}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'yt-api.p.rapidapi.com'
+        }
+    };
+
+
+    try {
+        const response = await axios.request(url, options);
+        console.log("Data sent for the channel", channelID)
+        res.send(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
+app.get("/video/getChannelvideos", async (req, res) => {
+    console.log("req receicved to get channel vids")
+    const channelID = req.query.channelID;
+    if (!channelID) {
+        return res.status(400).send("Video ID is required");
+    }
+    const url = `https://yt-api.p.rapidapi.com/channel/videos?id=${channelID}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'yt-api.p.rapidapi.com'
+        }
+    };
+
+
+    try {
+        const response = await axios.request(url, options);
+        // console.log("Data sent for ", channelID)
+        console.log(response.data)
+        res.send(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
+
 
 
 // Start the server
