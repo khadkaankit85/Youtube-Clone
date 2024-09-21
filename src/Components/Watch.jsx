@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import ReactPlayer from "react-player";
 // import { WatchFeed } from "./../../resources";
 import { dummyChannelDetail } from "../../dummydata";
+import FeedVideos from "./FeedVideos";
 
 const Watch = () => {
     const [realVideoDetail, setRealVideoDetail] = useState(null);
@@ -76,38 +77,43 @@ const Watch = () => {
     }
 
     return (
-        <div className="w-full flex md:mt-16 justify-between overflow-hidden max-sm:flex-col sm:justify-normal max-sm:mt-[50px]">
-            <div className="w-[75%] bg-black max-h-screen max-sm:w-full max-sm:h-[70vh] max-sm:p-4 max-sm:min-h-[50vh]">
-                {/* Embedded video player */}
-                <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=${videoID}`}
-                    width="100vw"
-                    height="100vh"
-                    controls
-                    playing
-                    className="react-player"
-                />
-                <div className="text-white bg-[rgba(94,93,93,0.2)] p-6">
-                    <h4 className="mb-2">{videoTitle}</h4>
-                    <p className="text-right mb-4">{likesCount} likes</p>
-                    <p className="text-right mb-4">{viewCount} views</p>
-                    <Link
-                        to={`/channel/${channelID}`}
-                        className="flex items-center gap-3 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition cursor-pointer"
-                    >
-                        <img
-                            src={channelProfilePicture}
-                            width="40"
-                            height="40"
-                            alt={`${channelName} Profile`}
-                            className="rounded-full"
-                        />
-                        <span>{channelName}</span>
-                    </Link>
+        <>
+            <div className="w-full flex md:mt-16 justify-between overflow-hidden max-sm:flex-col sm:justify-normal max-sm:mt-[50px]">
+                <div className="w-[75%] bg-black max-h-screen max-sm:w-full max-sm:h-[70vh] max-sm:p-4 max-sm:min-h-[50vh]">
+                    {/* Embedded video player */}
+                    <ReactPlayer
+                        url={`https://www.youtube.com/watch?v=${videoID}`}
+                        width="100vw"
+                        height="100vh"
+                        controls
+                        playing
+                        className="react-player"
+                    />
+                    <div className="text-white bg-[rgba(94,93,93,0.2)] p-6">
+                        <h4 className="mb-2">{videoTitle}</h4>
+                        <p className="text-right mb-4">{likesCount} likes</p>
+                        <p className="text-right mb-4">{viewCount} views</p>
+                        <Link
+                            to={`/channel/${channelID}`}
+                            className="flex items-center gap-3 p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition cursor-pointer"
+                        >
+                            <img
+                                src={channelProfilePicture}
+                                width="40"
+                                height="40"
+                                alt={`${channelName} Profile`}
+                                className="rounded-full"
+                            />
+                            <span>{channelName}</span>
+                        </Link>
+                    </div>
                 </div>
             </div>
-            {/* <WatchFeed realVideoDetail={realVideoDetail} /> */}
-        </div>
+
+            {searchData &&
+                <FeedVideos realSuggestedVideo={searchData} />
+            }
+        </>
     );
 };
 

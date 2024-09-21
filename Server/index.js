@@ -106,6 +106,34 @@ app.get("/video/info", async (req, res) => {
     }
 });
 
+app.get("/video/getrelatedVideos", async (req, res) => {
+    const videoID = req.query.videoID;
+    if (!videoID) {
+        return res.status(400).send("Video ID is required");
+    }
+
+    const url = `https://yt-api.p.rapidapi.com/related?id=${videoID}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': apiKey,
+            'x-rapidapi-host': 'yt-api.p.rapidapi.com'
+        }
+    };
+
+
+    try {
+        const response = await axios.request(url, options);
+        console.log(response.data)
+        res.send(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server error");
+    }
+});
+
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
