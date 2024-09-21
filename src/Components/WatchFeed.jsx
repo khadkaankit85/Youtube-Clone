@@ -8,7 +8,7 @@ const WatchFeed = ({ realVideoDetail }) => {
 
 
     return (
-        <div className="w-[25%] max-sm:w-full ml-1 
+        <div className="w-[25%] max-sm:w-full ml-1  
         overflow-y-auto overflow-x-hidden border-black flex-col gap-y- flex justify-center max-sm:h-fit max-sm:items-center 
         mt-10
         ">
