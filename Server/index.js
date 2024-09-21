@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-// backend.js (Node.js + Express)
 import express from 'express';
 import dotenv from 'dotenv';
 import axios from "axios";
@@ -11,10 +10,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Use the environment variable (API key)
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 const allowedOrigins = ["http://localhost:5173"]; // Add your app's URL
 
+// CORS setup
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) {
@@ -28,13 +27,30 @@ app.use(cors({
     }
 }));
 
+// Regex patterns for validation
+const videoIdRegex = /^[a-zA-Z0-9_-]{11}$/;
+const channelIdRegex = /^UC[a-zA-Z0-9_-]{22}$/;
+
+// Middleware for validating channel ID and video ID
+const validateChannelId = (req, res, next) => {
+    const channelID = req.query.channelID;
+    if (!channelID || !channelIdRegex.test(channelID)) {
+        return res.status(400).send("Invalid Channel ID");
+    }
+    next();
+};
+
+const validateVideoId = (req, res, next) => {
+    const videoID = req.query.videoID;
+    if (!videoID || !videoIdRegex.test(videoID)) {
+        return res.status(400).send("Invalid Video ID");
+    }
+    next();
+};
 
 // Route to get videos of a channel
-app.get("/channel/videos", async (req, res) => {
+app.get("/channel/videos", validateChannelId, async (req, res) => {
     const channelID = req.query.channelID;
-    if (!channelID) {
-        return res.status(400).send("Channel ID is required");
-    }
 
     const options = {
         method: 'GET',
@@ -82,11 +98,8 @@ app.get("/search", async (req, res) => {
 });
 
 // Route to get video info by video ID
-app.get("/video/info", async (req, res) => {
+app.get("/video/info", validateVideoId, async (req, res) => {
     const videoID = req.query.videoID;
-    if (!videoID) {
-        return res.status(400).send("Video ID is required");
-    }
 
     const url = `https://yt-api.p.rapidapi.com/video/info?id=${videoID}`;
     const options = {
@@ -99,7 +112,6 @@ app.get("/video/info", async (req, res) => {
 
     try {
         const response = await axios.request(url, options);
-        // console.log(response.data)
         res.send(response.data);
     } catch (error) {
         console.error(error);
@@ -107,11 +119,9 @@ app.get("/video/info", async (req, res) => {
     }
 });
 
-app.get("/video/getrelatedVideos", async (req, res) => {
+// Validate video ID for related videos
+app.get("/video/getrelatedVideos", validateVideoId, async (req, res) => {
     const videoID = req.query.videoID;
-    if (!videoID) {
-        return res.status(400).send("Video ID is required");
-    }
 
     const url = `https://yt-api.p.rapidapi.com/related?id=${videoID}`;
     const options = {
@@ -122,10 +132,9 @@ app.get("/video/getrelatedVideos", async (req, res) => {
         }
     };
 
-
     try {
         const response = await axios.request(url, options);
-        console.log("Data sent for ", videoID)
+        console.log("Data sent for ", videoID);
         res.send(response.data);
     } catch (error) {
         console.error(error);
@@ -133,11 +142,9 @@ app.get("/video/getrelatedVideos", async (req, res) => {
     }
 });
 
-app.get("/video/getChannelData", async (req, res) => {
+// Validate channel ID for channel data
+app.get("/video/getChannelData", validateChannelId, async (req, res) => {
     const channelID = req.query.channelID;
-    if (!channelID) {
-        return res.status(400).send("Video ID is required");
-    }
 
     const url = `https://yt-api.p.rapidapi.com/channel/home?id=${channelID}`;
     const options = {
@@ -148,22 +155,21 @@ app.get("/video/getChannelData", async (req, res) => {
         }
     };
 
-
     try {
         const response = await axios.request(url, options);
-        console.log("Data sent for the channel", channelID)
+        console.log("Data sent for the channel", channelID);
         res.send(response.data);
     } catch (error) {
         console.error(error);
         res.status(500).send("Server error");
     }
 });
-app.get("/video/getChannelvideos", async (req, res) => {
-    console.log("req receicved to get channel vids")
+
+// Validate channel ID for channel videos
+app.get("/video/getChannelvideos", validateChannelId, async (req, res) => {
+    console.log("Request received to get channel videos");
     const channelID = req.query.channelID;
-    if (!channelID) {
-        return res.status(400).send("Video ID is required");
-    }
+
     const url = `https://yt-api.p.rapidapi.com/channel/videos?id=${channelID}`;
     const options = {
         method: 'GET',
@@ -173,19 +179,15 @@ app.get("/video/getChannelvideos", async (req, res) => {
         }
     };
 
-
     try {
         const response = await axios.request(url, options);
-        // console.log("Data sent for ", channelID)
-        console.log(response.data)
+        console.log(response.data);
         res.send(response.data);
     } catch (error) {
         console.error(error);
         res.status(500).send("Server error");
     }
 });
-
-
 
 // Start the server
 app.listen(port, () => {
