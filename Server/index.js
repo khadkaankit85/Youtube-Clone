@@ -98,7 +98,7 @@ app.get("/video/info", async (req, res) => {
 
     try {
         const response = await axios.request(url, options);
-        console.log(response.data)
+        // console.log(response.data)
         res.send(response.data);
     } catch (error) {
         console.error(error);
@@ -124,7 +124,7 @@ app.get("/video/getrelatedVideos", async (req, res) => {
 
     try {
         const response = await axios.request(url, options);
-        console.log(response.data)
+        console.log("Data sent for ", videoID)
         res.send(response.data);
     } catch (error) {
         console.error(error);

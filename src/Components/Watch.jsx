@@ -11,21 +11,26 @@ const Watch = () => {
     const [error, setError] = useState(null);
     const { id: videoID } = useParams();
 
+    const [relatedVideos, setrelatedVideos] = useState(null)
+
     useEffect(() => {
         const fetchVideoInfo = async () => {
             try {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/video/info?videoID=${videoID}`);
+                const response2 = await fetch(`${import.meta.env.VITE_API_URL}/video/getrelatedVideos?videoID=${videoID}`);
 
-                if (!response.ok) {
+                if (!response.ok || !response2.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const jsonData = await response.json();
+                const jsonData2 = await response2.json()
                 // console.log(jsonData)
                 setRealVideoDetail(jsonData);
+                setrelatedVideos(jsonData2)
             } catch (err) {
                 console.error("Failed to fetch video info:", err);
                 setError(err.message);
-                setRealVideoDetail(dummyChannelDetail); // Ensure dummyChannelDetail matches the structure
+                setRealVideoDetail(dummyChannelDetail);
             } finally {
                 setIsLoading(false);
                 window.scrollTo(0, 0);
@@ -40,7 +45,6 @@ const Watch = () => {
         }
     }, [videoID]);
 
-    // **Corrected Data Extraction Based on Provided Structure**
     const videoTitle = realVideoDetail?.title || "Untitled Video";
     const viewCount = realVideoDetail?.viewCount ? parseInt(realVideoDetail.viewCount).toLocaleString() : "0";
     const likesCount = realVideoDetail?.likeCount ? parseInt(realVideoDetail.likeCount).toLocaleString() : "0";
@@ -51,7 +55,6 @@ const Watch = () => {
         realVideoDetail?.thumbnails?.default?.url ||
         "default-profile.png"; // Ensure this path points to a valid image
 
-    // **Handling Different States: Loading, Error, and Success**
     if (isLoading) {
         return (
             <div className="w-full h-screen flex justify-center items-center bg-black">
@@ -109,10 +112,10 @@ const Watch = () => {
                     </div>
                 </div>
             </div>
-
-            {searchData &&
-                <FeedVideos realSuggestedVideo={searchData} />
-            }
+            <>
+                {relatedVideos && <FeedVideos realSuggestedVideo={relatedVideos} />}
+                {!relatedVideos && <div>Loading....</div>}
+            </>
         </>
     );
 };

@@ -23,7 +23,7 @@ const Home = () => {
                 return response.json() // Parse response as JSON
             })
             .then((data) => {
-                setSearchData(data.data)
+                setSearchData(data)
                 setLoading(false) // End loading
             })
             .catch((err) => {

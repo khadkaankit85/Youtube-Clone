@@ -1,11 +1,11 @@
 import { VideoCard } from "../../resources"
-import propType from "prop-types"
+// eslint-disable-next-line react/prop-types
 const FeedVideos = ({ realSuggestedVideo }) => {
     // console.log(realSuggestedVideo)
     // const data = dummySuggestedVideo.items
-    const data = realSuggestedVideo
+    const data = realSuggestedVideo?.data
     return (
-        <section className="bg-black w-[calc(100%-205px)] mt-10 p-4 flex flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
+        <section className="bg-black w-full mt-10 p-4 flex justify-center flex-row flex-wrap h-screen overflow-auto gap-3 max-sm:w-full items-center max-sm:justify-center max-sm:p-0">
             {
                 data.map((vid) => {
                     // console.log(vid?.thumbnail?.[1]?.url || vid?.thumbnail?.[0]?.url || vid?.snippet?.thumbnails?.high?.url || vid?.snippet?.thumbnails?.default?.url)
@@ -46,8 +46,6 @@ const FeedVideos = ({ realSuggestedVideo }) => {
 
     )
 }
-FeedVideos.propTypes = {
-    realSuggestedVideo: propType.array
-}
+
 
 export default FeedVideos
