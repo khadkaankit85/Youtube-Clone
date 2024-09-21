@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import { dummyChannelDetail } from "../../dummydata";
 import FeedVideos from "./FeedVideos";
 
-import { Audio } from "react-loader-spinner";
+import { Circles } from "react-loader-spinner";
 
 const Watch = () => {
     const [realVideoDetail, setRealVideoDetail] = useState(null);
@@ -18,6 +18,12 @@ const Watch = () => {
     useEffect(() => {
         const fetchVideoInfo = async () => {
             try {
+                const videoIdRegex = /^[a-zA-Z0-9_-]{11}$/;
+                if (!videoIdRegex.test(videoID)) {
+                    throw new Error("Video Id Error")
+                }
+
+
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/video/info?videoID=${videoID}`);
                 const response2 = await fetch(`${import.meta.env.VITE_API_URL}/video/getrelatedVideos?videoID=${videoID}`);
 
@@ -61,14 +67,14 @@ const Watch = () => {
         return (
             <div className="w-screen h-screen flex items-center justify-center">
 
-                <Audio
-                    height="200"
-                    width="200"
-                    radius="9"
-                    color="green"
-                    ariaLabel="loading"
-                    wrapperStyle
-                    wrapperClass
+                <Circles
+                    height="80"
+                    width="80"
+                    color="#ff0000"
+                    ariaLabel="circles-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
                 />
             </div>
         );

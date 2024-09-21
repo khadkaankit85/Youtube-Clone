@@ -3,7 +3,7 @@ import FeedVideos from "./FeedVideos"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { apiEndpoint } from "../Assets/constants"
-import { Audio } from "react-loader-spinner"
+import { Circles } from "react-loader-spinner"
 
 const Home = () => {
 
@@ -44,14 +44,14 @@ const Home = () => {
                 </div>
                 {loading && <div className="w-screen h-screen flex items-center justify-center">
 
-                    <Audio
-                        height="200"
-                        width="200"
-                        radius="9"
-                        color="green"
-                        ariaLabel="loading"
-                        wrapperStyle
-                        wrapperClass
+                    <Circles
+                        height="80"
+                        width="80"
+                        color="#ff0000"
+                        ariaLabel="circles-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
                     />
                 </div>}  {/* Show loading state */}
                 {error && <div>Error: {error}</div>} {/* Show error state */}

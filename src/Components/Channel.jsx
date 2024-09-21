@@ -10,26 +10,40 @@ const Channel = () => {
 
     useEffect(() => {
         // Fetch channel details
-        fetch(`${import.meta.env.VITE_API_URL}/video/getChannelData?channelID=${channelID}`)
-            .then(async (response) => {
-                const fetchedData = await response.json();
-                setChannelData(fetchedData);
-                console.log("Channel data is ", fetchedData);
-            })
-            .catch((error) => {
-                console.log("Error fetching channel data: ", error);
-            });
+        try {
+            const channelIdRegex = /^UC[a-zA-Z0-9_-]{22}$/;
 
-        // Fetch channel videos
-        fetch(`${import.meta.env.VITE_API_URL}/video/getChannelvideos?channelID=${channelID}`)
-            .then(async (response) => {
-                const fetchedData = await response.json();
-                setChannelVideos(fetchedData);
-                console.log("Channel videos are  ", fetchedData);
-            })
-            .catch((error) => {
-                console.log("Error fetching channel videos: ", error);
-            });
+            if (!channelIdRegex.test(channelID)) {
+                throw new Error("invalid channel id")
+            }
+
+            fetch(`${import.meta.env.VITE_API_URL}/video/getChannelData?channelID=${channelID}`)
+                .then(async (response) => {
+                    const fetchedData = await response.json();
+                    setChannelData(fetchedData);
+                    console.log("Channel data is ", fetchedData);
+                })
+                .catch((error) => {
+                    console.log("Error fetching channel data: ", error);
+                });
+
+
+            // Fetch channel videos
+            fetch(`${import.meta.env.VITE_API_URL}/video/getChannelvideos?channelID=${channelID}`)
+                .then(async (response) => {
+                    const fetchedData = await response.json();
+                    setChannelVideos(fetchedData);
+                    console.log("Channel videos are  ", fetchedData);
+                })
+                .catch((error) => {
+                    console.log("Error fetching channel videos: ", error);
+                });
+        }
+
+        catch (e) {
+            console.log("e")
+
+        }
     }, [channelID]);
 
     if (!channelData) {

@@ -13,20 +13,21 @@ const port = process.env.PORT || 3000;
 
 // Use the environment variable (API key)
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
+const allowedOrigins = ["http://localhost:5173"]; // Add your app's URL
 
-const allowedOrigins = ["http://localhost:5173"];
 app.use(cors({
     origin: function (origin, callback) {
-        // allow requests with no origin 
-        if (!origin) return callback(null, true);
+        if (!origin) {
+            return callback(new Error('Requests without an origin are blocked.'), false); // Block requests without origin (e.g., Postman)
+        }
         if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
             return callback(new Error(msg), false);
         }
         return callback(null, true);
     }
 }));
+
 
 // Route to get videos of a channel
 app.get("/channel/videos", async (req, res) => {
