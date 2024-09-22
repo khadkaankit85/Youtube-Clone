@@ -48,6 +48,10 @@ const validateVideoId = (req, res, next) => {
     next();
 };
 
+app.get("/", (req, res) => {
+    res.send("Hello world")
+})
+
 // Route to get videos of a channel
 app.get("/channel/videos", validateChannelId, async (req, res) => {
     const channelID = req.query.channelID;
