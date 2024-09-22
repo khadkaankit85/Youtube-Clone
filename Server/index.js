@@ -14,18 +14,19 @@ const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
 
 // CORS setup
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) {
-            return callback(new Error('Requests without an origin are blocked.'), false); // Block requests without origin (e.g., Postman)
-        }
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    }
-}));
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (!origin) {
+//             return callback(new Error('Requests without an origin are blocked.'), false); // Block requests without origin (e.g., Postman)
+//         }
+//         if (allowedOrigins.indexOf(origin) === -1) {
+//             const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//             return callback(new Error(msg), false);
+//         }
+//         return callback(null, true);
+//     }
+// }));
+app.use(cors())
 
 // Regex patterns for validation
 const videoIdRegex = /^[a-zA-Z0-9_-]{11}$/;
