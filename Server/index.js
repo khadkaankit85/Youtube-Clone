@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
-const allowedOrigins = ["http://localhost:5173"]; // Add your app's URL
+const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
 
 // CORS setup
 app.use(cors({
