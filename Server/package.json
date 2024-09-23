@@ -8,7 +8,7 @@
     "dev": "nodemon server-local.js",
     "start": "node server-local.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install"
+    "build": "npm i"
   },
   "keywords": [],
   "author": "",

@@ -1,3 +1,8 @@
 [build]
-  command = "npm install && npm run build"
-  functions = "functions"
+  command = "npm install"  # Only install packages, no need for a separate build step for a simple Express API
+  functions = "functions"   # Specify the functions directory
+
+[[redirects]]
+  from = "/*"               # Redirect all requests
+  to = "/.netlify/functions/api"  # Route to your Lambda function
+  status = 200              # Set status code for the redirect
