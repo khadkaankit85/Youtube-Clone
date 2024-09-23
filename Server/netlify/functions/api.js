@@ -1,6 +1,6 @@
 import express from 'express';
 import serverless from 'serverless-http';
-import router from "../../index.js";
+import router from "../../Src/index.js";
 
 const app = express();
 
