@@ -13,6 +13,11 @@ const port = process.env.PORT || 3000;
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app/", "https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
 
+app.get("/", (req, res) => {
+    res.send("Hello world")
+})
+
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) {
@@ -57,9 +62,7 @@ const validateVideoId = (req, res, next) => {
     next();
 };
 
-app.get("/", (req, res) => {
-    res.send("Hello world")
-})
+
 
 // Route to get videos of a channel
 app.get("/channel/videos", validateChannelId, async (req, res) => {
