@@ -1,14 +1,15 @@
-/* eslint-disable no-undef */
 import express from 'express';
 import dotenv from 'dotenv';
 import axios from "axios";
 import cors from "cors";
+import serverless from "serverless-http";
+
 
 // Load environment variables from the .env file
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app/", "https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
@@ -205,7 +206,4 @@ app.get("/video/getChannelvideos", validateChannelId, async (req, res) => {
     }
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-});
+export const handler = serverless(app);
