@@ -1,30 +1,29 @@
-import express from 'express';
+import { Router } from 'express';
 import dotenv from 'dotenv';
 import axios from "axios";
 import cors from "cors";
-import serverless from "serverless-http";
 
 
 // Load environment variables from the .env file
 dotenv.config();
 
-const app = express();
+const app = Router();
 // const port = process.env.PORT || 3000;
 
 const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app/", "https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
 
 app.get("/", (req, res) => {
-    res.send("Hello world")
+    res.send("Hello world from router")
 })
 
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin) {
+        // if (!origin) {
 
-            return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
-        }
+        //     return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
+        // }
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = `The CORS policy for this site does not allow access from ${origin}.`;
             return callback(new Error(msg), false);
@@ -206,4 +205,4 @@ app.get("/video/getChannelvideos", validateChannelId, async (req, res) => {
     }
 });
 
-export const handler = serverless(app);
+export default app;
