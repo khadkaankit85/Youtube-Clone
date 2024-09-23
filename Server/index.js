@@ -23,9 +23,18 @@ app.use(cors({
             const msg = `The CORS policy for this site does not allow access from ${origin}.`;
             return callback(new Error(msg), false);
         }
+
         return callback(null, true);
     }
 }));
+app.use((req, res, next) => {
+    if (allowedOrigins.includes(req.headers.origin)) {
+        res.setHeader("Access-Control-Allow-Methods", "GET")
+        res.setHeader("Access-Control-Allow-Origin", req.headers.origin)
+        next()
+    }
+
+})
 
 // Regex patterns for validation
 const videoIdRegex = /^[a-zA-Z0-9_-]{11}$/;
