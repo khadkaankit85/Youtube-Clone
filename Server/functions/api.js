@@ -18,34 +18,26 @@ const app = express();
 app.get('/', (req, res) => {
     res.send("hello world");
 });
+// List of allowed origins (no trailing `/`)
+const allowedOrigins = ["https://youtube-clone-one-swart.vercel.app"];
 
-const allowedOrigins = ["https://youtube-clone-one-swart.vercel.app/", "https://youtube-clone-one-swart.vercel.app/"]; // Add your app's URL
-
-
-
-
+// Use the CORS middleware
 app.use(cors({
     origin: function (origin, callback) {
+        // Allow requests from allowed origins or block requests with no origin (like from Postman)
         if (!origin) {
-
-            return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
+            return callback(null, false); // Block requests without origin (e.g., Postman or direct server-side requests)
         }
-        if (allowedOrigins.indexOf(origin) === -1) {
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true); // Allow the origin
+        } else {
             const msg = `The CORS policy for this site does not allow access from ${origin}.`;
-            return callback(new Error(msg), false);
+            return callback(new Error(msg), false); // Block the request
         }
-
-        return callback(null, true);
-    }
+    },
+    methods: ["GET"], // Specify allowed methods
+    optionsSuccessStatus: 200, // Compatibility for older browsers
 }));
-app.use((req, res, next) => {
-    if (allowedOrigins.includes(req.headers.origin)) {
-        res.setHeader("Access-Control-Allow-Methods", "GET")
-        res.setHeader("Access-Control-Allow-Origin", req.headers.origin)
-        next()
-    }
-
-})
 
 // Use the imported router for API routes
 app.use('/.netlify/functions/api', router);  // path must route to lambda
