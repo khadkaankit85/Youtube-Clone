@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import dotenv from 'dotenv';
 import axios from "axios";
-import cors from "cors";
 
 
 // Load environment variables from the .env file
@@ -10,36 +9,12 @@ dotenv.config();
 const app = Router();
 // const port = process.env.PORT || 3000;
 
-const apiKey = process.env.NOT_YOUTUBE_API_KEY;
-const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app/", "https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
 
 app.get("/", (req, res) => {
     res.send("Hello world from router")
 })
+const apiKey = process.env.NOT_YOUTUBE_API_KEY;
 
-
-app.use(cors({
-    origin: function (origin, callback) {
-        // if (!origin) {
-
-        //     return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
-        // }
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = `The CORS policy for this site does not allow access from ${origin}.`;
-            return callback(new Error(msg), false);
-        }
-
-        return callback(null, true);
-    }
-}));
-app.use((req, res, next) => {
-    if (allowedOrigins.includes(req.headers.origin)) {
-        res.setHeader("Access-Control-Allow-Methods", "GET")
-        res.setHeader("Access-Control-Allow-Origin", req.headers.origin)
-        next()
-    }
-
-})
 
 // Regex patterns for validation
 const videoIdRegex = /^[a-zA-Z0-9_-]{11}$/;
