@@ -16,6 +16,7 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true) // Start loading before fetch
+        console.log("Fetching data from...", `${apiEndpoint}/search?searchQuery=${query}`)
         fetch(`${apiEndpoint}/search?searchQuery=${query}`)
             .then((response) => {
                 if (!response.ok) {
