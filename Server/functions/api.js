@@ -1,6 +1,13 @@
 import express from 'express';
 import serverless from 'serverless-http';
+// In api.js
+console.log("API function is starting...");
+
+// In Src/index.js
+console.log("Index router is being imported...");
+
 import router from "../Src/index.js";
+console.log("Index router is being imported...");
 
 const app = express();
 
