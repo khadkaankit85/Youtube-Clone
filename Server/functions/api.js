@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-const allowedOrigins = ["https://youtube-clone-drab-one-17.vercel.app/", "https://youtube-clone-drab-one-17.vercel.app"]; // Add your app's URL
+const allowedOrigins = ["https://youtube-clone-nnbg4mn5j-angkit-khadkas-projects.vercel.app/", "https://youtube-clone-nnbg4mn5j-angkit-khadkas-projects.vercel.app"]; // Add your app's URL
 
 
 
