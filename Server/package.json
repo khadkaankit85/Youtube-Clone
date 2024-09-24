@@ -5,10 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npm i",
     "local": "node server-local.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm i"
   },
   "keywords": [],
   "author": "",
