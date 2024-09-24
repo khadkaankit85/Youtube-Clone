@@ -1,11 +1,7 @@
 import express from 'express';
 import serverless from 'serverless-http';
 
-//for the stupid netlify functions
-import { Router } from 'express';
-import dotenv from 'dotenv';
-import axios from "axios";
-import cors from "cors";
+
 // In api.js
 console.log("API function is starting...");
 
