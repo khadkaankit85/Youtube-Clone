@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server-local.js",
-    "start": "node server-local.js",
+    "dev": "npm i",
+    "local": "node server-local.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm i"
   },
