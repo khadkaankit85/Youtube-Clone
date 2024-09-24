@@ -1,1 +1,1 @@
-export const apiEndpoint = "https://youtubeapiclone.netlify.app"
+export const apiEndpoint = "https://youtubeapiclone.netlify.app/.netlify/functions/api/"
