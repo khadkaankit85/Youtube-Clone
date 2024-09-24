@@ -17,7 +17,7 @@ const Channel = () => {
                 throw new Error("invalid channel id")
             }
 
-            fetch(`${import.meta.env.VITE_API_URL}/video/getChannelData?channelID=${channelID}`)
+            fetch(`https://youtubeapiclone.netlify.app/.netlify/functions/api/video/getChannelData?channelID=${channelID}`)
                 .then(async (response) => {
                     const fetchedData = await response.json();
                     setChannelData(fetchedData);
@@ -29,7 +29,7 @@ const Channel = () => {
 
 
             // Fetch channel videos
-            fetch(`${import.meta.env.VITE_API_URL}/video/getChannelvideos?channelID=${channelID}`)
+            fetch(`https://youtubeapiclone.netlify.app/.netlify/functions/api/video/getChannelvideos?channelID=${channelID}`)
                 .then(async (response) => {
                     const fetchedData = await response.json();
                     setChannelVideos(fetchedData);

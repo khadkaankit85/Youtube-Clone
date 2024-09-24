@@ -24,8 +24,8 @@ const Watch = () => {
                 }
 
 
-                const response = await fetch(`${import.meta.env.VITE_API_URL}/video/info?videoID=${videoID}`);
-                const response2 = await fetch(`${import.meta.env.VITE_API_URL}/video/getrelatedVideos?videoID=${videoID}`);
+                const response = await fetch(`https://youtubeapiclone.netlify.app/.netlify/functions/api/video/info?videoID=${videoID}`);
+                const response2 = await fetch(`https://youtubeapiclone.netlify.app/.netlify/functions/api/video/getrelatedVideos?videoID=${videoID}`);
 
                 if (!response.ok || !response2.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
