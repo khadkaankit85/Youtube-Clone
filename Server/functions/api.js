@@ -19,17 +19,17 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-const allowedOrigins = ["https://youtube-clone-nnbg4mn5j-angkit-khadkas-projects.vercel.app/", "https://youtube-clone-nnbg4mn5j-angkit-khadkas-projects.vercel.app"]; // Add your app's URL
+const allowedOrigins = ["https://youtube-clone-one-swart.vercel.app/", "https://youtube-clone-one-swart.vercel.app/"]; // Add your app's URL
 
 
 
 
 app.use(cors({
     origin: function (origin, callback) {
-        // if (!origin) {
+        if (!origin) {
 
-        //     return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
-        // }
+            return callback(new Error(`Requests without an origin are blocked ${allowedOrigins}`), false); // Block requests without origin (e.g., Postman)
+        }
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = `The CORS policy for this site does not allow access from ${origin}.`;
             return callback(new Error(msg), false);
