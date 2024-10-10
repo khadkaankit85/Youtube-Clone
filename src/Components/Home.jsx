@@ -36,7 +36,7 @@ const Home = () => {
     }, [query])
 
     return (
-        <section className="bg-black  min-h-[100vh]">
+        <section className="bg-[#0e1629] min-h-[100vh]">
             <div className="text-red-400"></div>
             <div className="flex justify-between ">
                 <div className="fixed left-0">
